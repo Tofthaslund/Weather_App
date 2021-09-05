@@ -1,8 +1,10 @@
 let weather = {
+    // API key is from Openweathermap.org
     "apiKey": "e1e665850557c078c2708952d16655b5",
     fetchWeather: function(city){
         fetch(
             "http://api.openweathermap.org/data/2.5/weather?q="
+            //to determ whit city you pick in search bar
             + city
             + "&units=metric&appid="
             + this.apiKey
@@ -11,10 +13,12 @@ let weather = {
             .then((data) => this.displayWeather(data));
     },
     displayWeather: function(data) {
-        const {name} = data;
+        // variables picked what to show in app
+        const { name } = data;
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
+        // querySelector to decide where to show weather information 
         document.querySelector(".city").innerText = "Weather in " + name;
         document.querySelector(".icon").src =
         "https://openweathermap.org/img/wn/" + icon + ".png";
@@ -28,16 +32,19 @@ let weather = {
     },
 };
 
+// Gave search button click funtion to fecth weather data
 document
 .querySelector(".search button")
 .addEventListener("click", function(){
     weather.search();
 });
 
+// user can user the Enter key to search for a city
 document.querySelector(".search-bar").addEventListener("keyup", function (event) {
     if (event.key == "Enter") {
         weather.search();
     }
 });
 
+// This will be the default city when user opens app
 weather.fetchWeather("Hobro");
