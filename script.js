@@ -3,7 +3,7 @@ let weather = {
     "apiKey": "e1e665850557c078c2708952d16655b5",
     fetchWeather: function(city){
         fetch(
-            "http://api.openweathermap.org/data/2.5/weather?q="
+            "https://api.openweathermap.org/data/2.5/weather?q="
             //to determ whit city you pick in search bar
             + city
             + "&units=metric&appid="
