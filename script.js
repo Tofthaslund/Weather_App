@@ -2,7 +2,7 @@ let weather = {
     "apiKey": "e1e665850557c078c2708952d16655b5",
     fetchWeather: function(city){
         fetch(
-            "api.openweathermap.org/data/2.5/weather?q="
+            "http://api.openweathermap.org/data/2.5/weather?q="
             + city
             + "&units=metric&appid="
             + this.apiKey
@@ -22,6 +22,22 @@ let weather = {
         document.querySelector(".description").innerText = description;
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind").innerText = speed.toFixed(1) + " Km/h";
+    },
+    search: function(){
+        this.fetchWeather(document.querySelector(".search-bar").value);
+    },
+};
 
+document
+.querySelector(".search button")
+.addEventListener("click", function(){
+    weather.search();
+});
+
+document.querySelector(".search-bar").addEventListener("keyup", function (event) {
+    if (event.key == "Enter") {
+        weather.search();
     }
-}
+});
+
+weather.fetchWeather("Hobro");
