@@ -48,3 +48,13 @@ document.querySelector(".search-bar").addEventListener("keyup", function (event)
 
 // This will be the default city when user opens app
 weather.fetchWeather("Hobro");
+
+
+
+//Show case time of day on the app
+window.onload = displayClock();
+function displayClock(){
+    var display = new Date().toLocaleTimeString();
+    document.querySelector(".time").innerText = "Time of day: " + display;
+    setTimeout(displayClock, 1000)
+}
