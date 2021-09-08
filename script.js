@@ -25,7 +25,7 @@ let weather = {
         document.querySelector(".temp").innerText = Math.trunc(temp) + "°C";
         document.querySelector(".description").innerText = description;
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
-        document.querySelector(".wind").innerText = speed.toFixed(1) + " Km/h";
+        document.querySelector(".wind").innerText = "Windspeed: " + speed.toFixed(1) + " Km/h";
     },
     search: function(){
         this.fetchWeather(document.querySelector(".search-bar").value);
@@ -46,8 +46,9 @@ document.querySelector(".search-bar").addEventListener("keyup", function (event)
     }
 });
 
+
 // This will be the default city when user opens app
-weather.fetchWeather("Hobro");
+weather.fetchWeather("Greenwich");
 
 
 
@@ -58,3 +59,5 @@ function displayClock(){
     document.querySelector(".time").innerText = "Time of day: " + display;
     setTimeout(displayClock, 1000)
 }
+
+  
